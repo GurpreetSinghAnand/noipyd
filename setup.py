@@ -8,5 +8,5 @@ setup(
     license='MIT License',
     author='Gurpreet Singh Anand',
     author_email='gurpreetsinghanand@live.com',
-    description='To automate NO-IP domain renewal'
+    description='A utility tool to automate NO-IP domain renewal'
 )
