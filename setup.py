@@ -1,9 +1,9 @@
 from setuptools import setup
 
 setup(
-    name='turtle',
+    name='noipyd',
     version='1.0.1',
-    packages=['turtle'],
+    packages=['noipyd'],
     url='',
     license='MIT License',
     author='Gurpreet Singh Anand',

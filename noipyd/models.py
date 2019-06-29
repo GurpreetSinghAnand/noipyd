@@ -22,8 +22,9 @@
 # 
 # Author: Gurpreet Singh Anand
 # Email: gurpreetsinghanand@live.com
-# Project Repository: https://github.com/GurpreetSinghAnand/
-# Filename: 
+# Project Repository: https://github.com/GurpreetSinghAnand/turtle/turtle
+# Filename: models.py
 # Description:
+
 
 

@@ -54,7 +54,6 @@ class NoIPAgent(object):
         self.init_browser()
         self.navigate(self.__URL__)
         self.login()
-        self.navigate(self.__DDNS_URL__)
         self.fetch_domains()
         self.check_domain_renewal()
 
@@ -147,6 +146,7 @@ class NoIPAgent(object):
         self._is_logged_in = True
 
     def fetch_domains(self):
+        self.navigate(self.__DDNS_URL__)
         domains = self.__get_browser__().find_elements_by_css_selector(self.__DOMAINS_CSS__)
         self.__set_domains__(domains)
 
