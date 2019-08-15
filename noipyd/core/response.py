@@ -7,5 +7,12 @@
 # Author: Gurpreet Singh Anand
 # Email: gurpreetsinghanand@live.com
 # Project Repository: https://github.com/GurpreetSinghAnand/noipyd/noipyd/core
-# Filename: models.py
+# Filename: response.py
 # Description:
+
+from .base import BaseResponse
+
+
+class JSONResponse(BaseResponse):
+    import json
+

@@ -6,6 +6,6 @@
 #
 # Author: Gurpreet Singh Anand
 # Email: gurpreetsinghanand@live.com
-# Project Repository: https://github.com/GurpreetSinghAnand/noipyd/noipyd/core
-# Filename: models.py
+# Project Repository: https://github.com/GurpreetSinghAnand/noipd/noipd/core
+# Filename: logger.py
 # Description:

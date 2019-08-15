@@ -27,6 +27,6 @@
 # Description:
 
 
-from agent import NoIPAgent
+from core.agent import NoIPAgent
 
-na = NoIPAgent(username='gurpreetsinghanand@live.com', password='Year2014', domain='hydrogen.ddns.net')
+na = NoIPAgent(username='master.gurpreetsinghanand@gmail.com', password='Year2014', domain='hydrogen.ddns.net')
