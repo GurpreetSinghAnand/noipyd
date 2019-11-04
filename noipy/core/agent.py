@@ -16,7 +16,7 @@ from .parser import DomainParser
 from configparser import ConfigParser
 from datetime import datetime
 
-class NoIPAgent(BaseAgent):
+class NoIPWebAgent(BaseAgent):
     from selenium import webdriver
     __URL__ = 'https://www.noip.com/login?ref_url=console'
     __DDNS_URL__ = 'https://my.noip.com/#!/dynamic-dns'
@@ -29,7 +29,7 @@ class NoIPAgent(BaseAgent):
     __DOMAIN_NAME_CSS__ = 'td.word-break-col a.text-info'
 
     def __init__(self, **kwargs):
-        super(NoIPAgent, self).__init__(**kwargs)
+        super(NoIPWebAgent, self).__init__(**kwargs)
 
         self.username = None
         self.password = None
@@ -177,3 +177,6 @@ class NoIPAgent(BaseAgent):
         self.check_domain_renewal()
         self.renew()
         self.logout()
+
+class NoIPAgent(BaseAgent):
+    pass

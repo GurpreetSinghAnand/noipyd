@@ -9,16 +9,16 @@
 # Author: Gurpreet Singh Anand
 # Email: gurpreetsinghanand@live.com
 # Project Repository: https://github.com/GurpreetSinghAnand/noipy/noipy/
-# Filename: noipy.py
+# Filename: noipy-add.py
 # Description:
 
 import argparse
-from core.agent import NoIPWebAgent
+from noipy.core.agent import NoIPWebAgent
 
 __version__ = '1.0.1'
 
 def  main():
-    parser = argparse.ArgumentParser(prog='noipy', description='A utility tool to automate NO-IP domain renewal')
+    parser = argparse.ArgumentParser(prog='noipy-add', description='A utility tool to register NO-IP account details.')
     parser.add_argument("-u", "--username",
                         required=True,
                         help="the NoIP USERNAME",
@@ -29,12 +29,6 @@ def  main():
                         help="the NoIP PASSWORD",
                         dest="password",
                         metavar="PASSWORD")
-    parser.add_argument("-d", "--domain",
-                        required=True,
-                        help="the NoIP DOMAIN",
-                        dest="domain",
-                        metavar="DOMAIN")
-
 
     args = parser.parse_args()
     kwargs = vars(args)
