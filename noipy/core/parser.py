@@ -10,8 +10,8 @@
 # Filename: parser.py
 # Description:
 
-from .base import BaseParser
-from .response import JSONResponse
+from core.base import BaseParser
+from core.response import JSONResponse
 
 
 class DOMParser(BaseParser):
@@ -46,7 +46,6 @@ class DomainParser(BaseParser):
     import pytz
     from dateutil import parser as DateTimeParser
     from datetime import datetime, timedelta
-
 
     def __init__(self, **kwargs):
         super(DomainParser, self).__init__(**kwargs)

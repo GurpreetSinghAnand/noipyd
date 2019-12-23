@@ -26,8 +26,7 @@
 # Filename: 
 # Description:
 
+from core.agent import NoIPAgent
 
-from core.agent import NoIPWebAgent
-
-na = NoIPWebAgent(username='gurpreetsinghanand@live.com', password='Year2014')
-na.begin()
+na = NoIPAgent(username='gurpreetsinghanand@live.com', password='Year2014', must_register=True)
+na.run()

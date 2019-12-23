@@ -15,25 +15,40 @@
 import argparse
 from core.agent import NoIPWebAgent
 
-__version__ = '1.0.1'
 
-def  main():
+def main():
     parser = argparse.ArgumentParser(prog='noipy', description='A utility tool to automate NO-IP domain renewal')
     parser.add_argument("-u", "--username",
                         required=True,
-                        help="the NoIP USERNAME",
+                        help="The NoIP USERNAME",
                         dest="username",
                         metavar="USERNAME")
     parser.add_argument("-p", "--password",
                         required=True,
-                        help="the NoIP PASSWORD",
+                        help="The NoIP PASSWORD",
                         dest="password",
                         metavar="PASSWORD")
-    parser.add_argument("-d", "--domain",
+    parser.add_argument("-r", "--register",
+                        required=False,
+                        default=False,
+                        action='store_true',
+                        help="Save NoIP credentials in database",
+                        dest="must_register")
+    parser.add_argument("-w", "--workers",
                         required=True,
-                        help="the NoIP DOMAIN",
-                        dest="domain",
-                        metavar="DOMAIN")
+                        help="Number of WORKERS to run concurrently",
+                        dest="workers",
+                        metavar="WORKERS")
+    parser.add_argument("-l", "--log-level",
+                        required=False,
+                        help="LOG LEVEL for saving logs",
+                        dest="log_level",
+                        metavar="LOG LEVEL")
+    parser.add_argument("-f", "--log-file",
+                        required=False,
+                        help="LOG FILE to save logs",
+                        dest="log_file",
+                        metavar="LOG FILE")
 
 
     args = parser.parse_args()

@@ -16,6 +16,7 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, scoped_session
 
 Base = declarative_base()
 
@@ -25,7 +26,7 @@ class Account(Base):
     # Here we define columns for the table account
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
-    username = Column(String(250), nullable=False)
+    username = Column(String(250), nullable=False, unique=True)
     password = Column(String(250), nullable=False)
 
 
@@ -45,3 +46,7 @@ class Domain(Base):
 
 # Create an engine that stores data in the local directory's
 engine = create_engine('sqlite:///.noip.sqlite3.db')
+Base.metadata.create_all(engine)
+Session = scoped_session(sessionmaker())
+
+

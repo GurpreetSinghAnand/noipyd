@@ -10,9 +10,8 @@
 # Filename: __init__.py
 # Description:
 
-from noipy.core import *
-from noipy.models import Base, engine
+from core import *
+from core.models import Base, engine
 
 # Create all tables in the engine. This is equivalent to "Create Table"
 # statements in raw SQL.
-Base.metadata.create_all(engine)

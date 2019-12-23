@@ -46,7 +46,7 @@ class BaseAgent(Base):
     def __init__(self, **kwargs):
         super(BaseAgent, self).__init__(**kwargs)
 
-    def communicate(self):
+    def run(self):
         pass
 
 

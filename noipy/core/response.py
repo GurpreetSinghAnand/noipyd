@@ -10,7 +10,7 @@
 # Filename: response.py
 # Description:
 
-from .base import BaseResponse
+from core.base import BaseResponse
 
 
 class JSONResponse(BaseResponse):
