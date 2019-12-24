@@ -12,6 +12,7 @@
 
 import pytz
 import time
+from threading import Thread, ThreadError
 from core.base import BaseAgent
 from core.parser import DomainParser
 from configparser import ConfigParser
@@ -32,19 +33,18 @@ class NoIPWebAgent(BaseAgent):
     __DOMAIN_NAME_CSS__ = 'td.word-break-col a.text-info'
 
     def __init__(self, **kwargs):
-        super(NoIPWebAgent, self).__init__(**kwargs)
-
         self.username = None
         self.password = None
         self.browser = None
         self.log_level = None
         self.log_file = None
 
-
         self._is_logged_in = False
         self._enable_logging = False
         self._chrome_options = None
         self._service_args = None
+
+        super(NoIPWebAgent, self).__init__(**kwargs)
 
         self.set(**kwargs)
         # self.run()
@@ -198,18 +198,19 @@ class NoIPWebAgent(BaseAgent):
 class NoIPAgent(BaseAgent):
 
     def __init__(self, **kwargs):
-        super(NoIPAgent, self).__init__(**kwargs)
-
         self.username = None
         self.password = None
         self.workers = None
         self.log_level = None
         self.log_file = None
         self.account = None
-        self._db_session = Session(bind=engine)
+        self._db_session = Session()
 
         self._must_register = False
         self._enable_logging = False
+        self._probes = []
+
+        super(NoIPAgent, self).__init__(**kwargs)
 
         self.set(**kwargs)
 
@@ -260,6 +261,17 @@ class NoIPAgent(BaseAgent):
     def __get_enable_logging__(self):
         return self._enable_logging
 
+    def __manage_probes__(self):
+        while len(self._probes) > 0:
+            index = 0
+            for probe in self._probes:
+                if probe.is_alive():
+                    continue
+                else:
+                    del self._probes[index]
+                    del probe
+                index = index + 1
+
     def register(self):
         try:
             self.account = Account(username=self.__get_username__(), password=self.__get_password__())
@@ -270,7 +282,11 @@ class NoIPAgent(BaseAgent):
 
     def run(self):
         agent = NoIPWebAgent(username=self.__get_username__(), password=self.__get_password__(), log_level=self.__get_log_level__(), log_file=self.__get_log_file__(), enable_logging=self.__get_enable_logging__())
-        agent.run()
+        thread = Thread(target=agent.run)
+        thread.start()
+        self._probes.append(thread)
+        self.__manage_probes__()
+
 
 
 

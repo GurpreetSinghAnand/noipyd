@@ -24,9 +24,10 @@ class Base(object):
 
     def __set_special_properties__(self, special_properties):
         self.special_properties.extend(special_properties)
+        self.special_properties = list(set(self.special_properties))
 
     def __get_special_properties__(self):
-        return list(set(self.special_properties))
+        return self.special_properties
 
     def set(self, **kwargs):
         if kwargs != {}:

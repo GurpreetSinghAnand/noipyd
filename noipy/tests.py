@@ -28,5 +28,5 @@
 
 from core.agent import NoIPAgent
 
-na = NoIPAgent(username='gurpreetsinghanand@live.com', password='Year2014', must_register=True)
+na = NoIPAgent(username='gurpreetsinghanand@live.com', password='Year2014', must_register=True, workers=3, special_properties=['workers','must_register'])
 na.run()

@@ -345,6 +345,8 @@ class DomainParser(BaseParser):
                 src = row.select(target)
                 if len(src) > 1:
                     target = src[0]
+                elif len(src) == 0 and name == 'expires':
+                    target = 'Expires in 0 days'
                 else:
                     target = src.pop()
                 target = parser.BeautifulSoup(str(target), 'html.parser')
